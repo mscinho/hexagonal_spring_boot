@@ -2,6 +2,7 @@ package com.soares.hexagonal.config;
 
 import com.soares.hexagonal.adapters.out.FindAddressByZipCodeAdapter;
 import com.soares.hexagonal.adapters.out.InsertCustomerAdapter;
+import com.soares.hexagonal.adapters.out.SendCpfValidationAdapter;
 import com.soares.hexagonal.application.core.usecase.InsertCustomerUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,10 @@ public class InsertCustomerConfig {
     @Bean
     public InsertCustomerUseCase insertCustomerUseCase(
             FindAddressByZipCodeAdapter findAddressByZipCodeAdapter,
-            InsertCustomerAdapter insertCustomerAdapter
+            InsertCustomerAdapter insertCustomerAdapter,
+            SendCpfValidationAdapter sendCpfValidationAdapter
     ) {
-        return new InsertCustomerUseCase(findAddressByZipCodeAdapter, insertCustomerAdapter);
+        return new InsertCustomerUseCase(findAddressByZipCodeAdapter, insertCustomerAdapter, sendCpfValidationAdapter);
     }
 
 }
